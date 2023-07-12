@@ -15,12 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from page.views import (
-    home_view, 
-    about_us_view, 
-    contact_us_view,
-    )
+from django.urls import path, include
+# from page.views import (
+#     home_view, 
+#     about_us_view, 
+#     contact_us_view,
+#     vision_view
+#     )
 # from django.http import HttpResponse
 
 # def home(request):
@@ -28,9 +29,12 @@ from page.views import (
 
 # Danisma
 urlpatterns = [
-    path('', home_view),
-    path('hakkimizda/', about_us_view),
-    path('iletisim/', contact_us_view),
+    # path('', home_view, name='home'),
+    # path('hakkimizda/', about_us_view, name= 'about_us'),
+    # path('vizyonumuz/', vision_view, name='vision'),
+    # path('iletisim/', contact_us_view, name='contact_us'),
+    path('urunler/', include('product.urls'), ),
+    path('', include('page.urls'), ), #page app içindeki urls.py den bilgileri alıyoruz.
     path('admin/', admin.site.urls),
 ]
 
